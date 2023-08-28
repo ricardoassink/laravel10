@@ -48,6 +48,9 @@ SESSION_DRIVER=redis
 REDIS_HOST=redis
 REDIS_PASSWORD=null
 REDIS_PORT=6379
+teste
+e tal
+
 ```
 
 
