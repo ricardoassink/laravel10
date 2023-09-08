@@ -16,7 +16,7 @@ class CursosController extends Controller
         // $curso = new Curso(); não precisa pois já vem pela dependência(uso do parâmetro "Curso $curso" já traz o objeto)
         $cursos = $curso->all(); // retorna uma collection
 
-        //dd($cursos);
+        dd($cursos);
 
         return view('admin/cursos/index', compact('cursos'));
     }
