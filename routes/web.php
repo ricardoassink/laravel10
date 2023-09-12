@@ -15,10 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/cursos',[CursosController::class,'index'])->name('/cursos.index');
+Route::get('/cursos/{id}/edit',[CursosController::class,'edit'])->name('cursos.edit');
+
+Route::post('/cursos', [CursosController::class,'gravar'])->name('cursos.gravar');
+Route::get('/cursos/novo',[CursosController::class,'novo'])->name('cursos.novo');
+
+Route::get('/cursos',[CursosController::class,'index'])->name('cursos.index');
 
 Route::get('/contato', [SiteController::class, 'contact']);
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/cursos/{id}',[CursosController::class,'show'])->name('cursos.show');
+
+
