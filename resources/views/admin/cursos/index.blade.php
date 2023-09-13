@@ -3,7 +3,7 @@
 <a href="{{ route('cursos.novo') }}">Adicionar novo Curso</a>
 
 
-<table border='1' >
+<table border='1'>
     <thead>
         <th>id</th>
         <th>Nome:</th>

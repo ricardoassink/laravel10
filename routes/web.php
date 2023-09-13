@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/cursos/{id}/edit',[CursosController::class,'edit'])->name('cursos.edit');
 
 Route::post('/cursos', [CursosController::class,'gravar'])->name('cursos.gravar');
@@ -29,5 +30,7 @@ Route::get('/', function () {
 });
 
 Route::get('/cursos/{id}',[CursosController::class,'show'])->name('cursos.show');
+Route::put('/cursos/{id}',[CursosController::class,'update'])->name('cursos.update');
+Route::delete('/cursos/{id}',[CursosController::class,'delete'])->name('cursos.delete');
 
 

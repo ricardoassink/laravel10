@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateCurso;
 use App\Models\Curso;
 use Illuminate\Http\Request;
 
@@ -40,7 +41,7 @@ class CursosController extends Controller
         return view('admin/cursos/novo');
     }
 
-    public function gravar(Request $request, Curso $curso)
+    public function gravar(StoreUpdateCurso $request, Curso $curso)
     {
         $data = $request->all();
         $data['status'] = 'a';
@@ -57,7 +58,39 @@ class CursosController extends Controller
 
             return redirect()->back();
         }
-        
+
         return view('admin/cursos/edit', compact('curso'));
+    }
+
+    public function update(string|int $id, StoreUpdateCurso $request, Curso $curso)
+    {
+        if (!$curso = $curso->find($id)) {
+
+            return back();
+        }
+
+        //$curso->nome = $request->nome;
+        //$curso->body = $request->body;
+        //$curso->save();
+
+        $curso->update($request->only([
+            'nome','body'
+        ]));
+
+        return redirect()->route('cursos.index');
+
+    }
+
+    public function delete(string|int $id, Request $request, Curso $curso)
+    {
+        if (!$curso = $curso->find($id)) {
+
+            return back();
+        }
+
+        $curso->delete();
+
+        return redirect()->route('cursos.index');
+
     }
 }
