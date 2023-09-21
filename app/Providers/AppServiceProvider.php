@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Repositories\CursoEloquentORM;
-use App\Repositories\CursoRepositoryInterface;
+use App\Repositories\{CursoEloquentORM};
+use App\Repositories\{CursoRepositoryInterface};
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

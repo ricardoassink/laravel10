@@ -25,7 +25,7 @@ class CursoEloquentORM implements CursoRepositoryInterface
                         }
 
                     })
-                    ->all()
+                    ->get()
                     ->toArray();
     }
 
