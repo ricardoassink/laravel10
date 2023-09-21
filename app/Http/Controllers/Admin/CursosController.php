@@ -19,13 +19,11 @@ class CursosController extends Controller
     public function index(Request $request)
     {
 
-        //$cursos = Curso::all(); Já pega tudo.
-
-
-        // $curso = new Curso(); não precisa pois já vem pela dependência(uso do parâmetro "Curso $curso" já traz o objeto)
-        $cursos = $this->service->getAll($request->filter); // agora retorna um array
-
-        //dd($cursos);
+        $cursos = $this->service->paginate(
+            page: $request->get('page', 1),
+            totalPerPage: $request->get('per_page', 2),
+            filter: $request->filter
+        ); 
 
         return view('admin/cursos/index', compact('cursos'));
     }

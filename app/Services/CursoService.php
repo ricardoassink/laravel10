@@ -5,6 +5,8 @@ namespace App\Services;
 use App\DTO\CreateCursoDTO;
 use App\DTO\UpdateCursoDTO;
 use App\Repositories\CursoRepositoryInterface;
+use App\Repositories\PaginationInterface;
+use App\Repositories\PaginationPresenter;
 use stdClass;
 
 class CursoService
@@ -15,6 +17,20 @@ class CursoService
         protected CursoRepositoryInterface $repository,
         
     ){}
+
+    public function paginate(
+        int $page = 1, 
+        int $totalPerPage = 15,
+        string $filter = null
+        ): PaginationInterface
+    {
+        return $this->repository->paginate(
+            page: $page,
+            totalPerPage: $totalPerPage,
+            filter: $filter
+        );
+
+    }
 
     public function getAll(string $filter = null): array
     {

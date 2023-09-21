@@ -13,19 +13,22 @@
         <th>Detalhar: </th>
     </thead>
     <tbody>
-        @foreach ($cursos as $curso)
+        @foreach ($cursos->items() as $curso)
             <tr>
-                <td>{{ $curso['id'] }}</td>
-                <td>{{ $curso['nome'] }}</td>
-                <td>{{ $curso['body'] }}</td>
-                <td>{{ $curso['status'] }}</td>
+                <td>{{ $curso->id }}</td>
+                <td>{{ $curso->nome }}</td>
+                <td>{{ $curso->body }}</td>
+                <td>{{ $curso->status }}</td>
                 <td>
-                    <a href="{{ route('cursos.edit', $curso['id']) }}"> editar -> </a>
+                    <a href="{{ route('cursos.edit', $curso->id) }}"> editar -> </a>
                 </td>
                 <td>
-                    <a href="{{ route('cursos.show', $curso['id']) }}"> detalhar -> </a>
+                    <a href="{{ route('cursos.show', $curso->id) }}"> detalhar -> </a>
                 </td>
             </tr>
         @endforeach
+    </tbody>
 
 </table>
+
+<x-pagination :paginator="$cursos"/>
