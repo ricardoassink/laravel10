@@ -22,10 +22,12 @@ class CursosController extends Controller
         $cursos = $this->service->paginate(
             page: $request->get('page', 1),
             totalPerPage: $request->get('per_page', 2),
-            filter: $request->filter
+            filter: $request->filter,
         ); 
 
-        return view('admin/cursos/index', compact('cursos'));
+        $filters = ['filter' => $request->get('filter','')];
+
+        return view('admin/cursos/index', compact('cursos', 'filters'));
     }
 
     public function show(string|int $id)

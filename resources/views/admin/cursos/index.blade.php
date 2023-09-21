@@ -31,4 +31,7 @@
 
 </table>
 
-<x-pagination :paginator="$cursos"/>
+<x-pagination 
+    :paginator="$cursos"
+    :appends="$filters"
+/>
