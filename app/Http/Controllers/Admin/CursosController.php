@@ -2,21 +2,28 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DTO\CreateCursoDTO;
+use App\DTO\UpdateCursoDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateCurso;
 use App\Models\Curso;
+use App\Services\CursoService;
 use Illuminate\Http\Request;
 
 class CursosController extends Controller
 {
-    public function index(Curso $curso)
+    public function __construct(
+        protected CursoService $service
+    ){}   
+
+    public function index(Request $request)
     {
 
         //$cursos = Curso::all(); Já pega tudo.
 
 
         // $curso = new Curso(); não precisa pois já vem pela dependência(uso do parâmetro "Curso $curso" já traz o objeto)
-        $cursos = $curso->all(); // retorna uma collection
+        $cursos = $this->service->getAll($request->filter); // agora retorna um array
 
         //dd($cursos);
 
@@ -28,7 +35,7 @@ class CursosController extends Controller
 
         // $curso = Curso::find($id)
         // $curso = Curso::where('id','=',$id)->first();
-        if (!$curso = Curso::find($id)) {
+        if (!$curso = $this->service->findOne($id)) {
 
             return redirect()->back();
         }
@@ -43,18 +50,16 @@ class CursosController extends Controller
 
     public function gravar(StoreUpdateCurso $request, Curso $curso)
     {
-        $data = $request->all();
-        $data['status'] = 'a';
-
-        // chama o Model e o método CREATE que vai inserir os dados no banco automaticamente.
-        $curso->create($data); // agora curso é um objeto
+        $this->service->new(
+            CreateCursoDTO::makeFromRequest($request)
+        );
 
         return redirect()->route('cursos.index'); // redireciona para a lista de cursos
     }
 
     public function edit(string| int $id)
     {
-        if (!$curso = Curso::find($id)) {
+        if (!$curso = $this->service->findOne($id)) {
 
             return redirect()->back();
         }
@@ -62,33 +67,31 @@ class CursosController extends Controller
         return view('admin/cursos/edit', compact('curso'));
     }
 
-    public function update(string|int $id, StoreUpdateCurso $request, Curso $curso)
+    public function update(string|int $id, StoreUpdateCurso $request)
     {
-        if (!$curso = $curso->find($id)) {
+        $curso = $this->service->update(
+            UpdateCursoDTO::makeFromRequest($request)
+        );
+
+        if (!$curso) {
 
             return back();
         }
-
-        //$curso->nome = $request->nome;
-        //$curso->body = $request->body;
-        //$curso->save();
-
-        $curso->update($request->only([
-            'nome','body'
-        ]));
 
         return redirect()->route('cursos.index');
 
     }
 
-    public function delete(string|int $id, Request $request, Curso $curso)
+    // public function delete(string|int $id, Request $request, Curso $curso)
+    public function delete(string $id)
     {
-        if (!$curso = $curso->find($id)) {
+        // if (!$curso = $curso->find($id)) {
 
-            return back();
-        }
+        //     return back();
+        // }
 
-        $curso->delete();
+        // $curso->delete();
+        $this->service->delete($id);
 
         return redirect()->route('cursos.index');
 
