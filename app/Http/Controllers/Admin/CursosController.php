@@ -21,7 +21,7 @@ class CursosController extends Controller
 
         $cursos = $this->service->paginate(
             page: $request->get('page', 1),
-            totalPerPage: $request->get('per_page', 2),
+            totalPerPage: $request->get('per_page', 10),
             filter: $request->filter,
         ); 
 
