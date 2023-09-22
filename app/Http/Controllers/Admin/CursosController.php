@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\DTO\CreateCursoDTO;
-use App\DTO\UpdateCursoDTO;
+use App\DTO\Cursos\CreateCursoDTO;
+use App\DTO\Cursos\UpdateCursoDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateCurso;
 use App\Models\Curso;

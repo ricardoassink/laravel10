@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\DTO\CreateCursoDTO;
-use App\DTO\UpdateCursoDTO;
+use App\DTO\Cursos\CreateCursoDTO;
+use App\DTO\Cursos\UpdateCursoDTO;
 use App\Models\Curso;
 use App\Repositories\CursoRepositoryInterface;
 use stdClass;

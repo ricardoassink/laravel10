@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\DTO\CreateCursoDTO;
-use App\DTO\UpdateCursoDTO;
+use App\DTO\Cursos\CreateCursoDTO;
+use App\DTO\Cursos\UpdateCursoDTO;
 use App\Repositories\CursoRepositoryInterface;
 use App\Repositories\PaginationInterface;
 use App\Repositories\PaginationPresenter;
