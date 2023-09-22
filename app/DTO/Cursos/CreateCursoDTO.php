@@ -2,13 +2,14 @@
 
 namespace App\DTO\Cursos;
 
+use App\Enums\CursoStatus;
 use App\Http\Requests\StoreUpdateCurso;
 
 class CreateCursoDTO{
 
     public function __construct(
         public string $nome,
-        public string $status,
+        public CursoStatus $status,
         public string $body
     )
     {}
@@ -17,7 +18,7 @@ class CreateCursoDTO{
     {
         return new self(
             $request->nome,
-            'a',
+            CursoStatus::A,
             $request->body
         );
     }
