@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\CursoStatus;
 use App\Http\Controllers\Admin\{CursosController};
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test',function(){
+    dd(array_column(CursoStatus::cases(), 'name'));
+});
 
 Route::get('/cursos/{id}/edit',[CursosController::class,'edit'])->name('cursos.edit');
 

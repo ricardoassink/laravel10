@@ -18,7 +18,7 @@
                 <td>{{ $curso->id }}</td>
                 <td>{{ $curso->nome }}</td>
                 <td>{{ $curso->body }}</td>
-                <td>{{ $curso->status }}</td>
+                <td>{{ getStatusCurso($curso->status) }}</td>
                 <td>
                     <a href="{{ route('cursos.edit', $curso->id) }}"> editar -> </a>
                 </td>
