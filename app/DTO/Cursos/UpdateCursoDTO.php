@@ -15,10 +15,10 @@ class UpdateCursoDTO{
     )
     {}
 
-    public static function makeFromRequest(StoreUpdateCurso $request):self
+    public static function makeFromRequest(StoreUpdateCurso $request, $id = null):self
     {
         return new self(
-            $request->id,
+            $id ?? $request->id,
             $request->nome,
             CursoStatus::A,
             $request->body

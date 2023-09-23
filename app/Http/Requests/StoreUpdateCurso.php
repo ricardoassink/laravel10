@@ -35,16 +35,16 @@ class StoreUpdateCurso extends FormRequest
         ];
 
         // isso quer dizer que a requisição é de UPDATE
-        if ($this->method() === 'PUT') {
+        if ($this->method() === 'PUT' || $this->method() === 'PATCH' ) {
 
             $rules['nome'] = [
-                'required',
+                'required', // nullable
                 'min:3',
                 'max:255',
                 // acrescenta uma exceção (Exception), Não aplique a regra, se o ID bater com a coluna ID 
                // "unique:cursos,nome,{$this->id},id",
                // ou desta forma abaixo
-               Rule::unique('cursos')->ignore($this->id)    
+               Rule::unique('cursos')->ignore($this->curso ?? $this->id),   
             ];
         }
 
