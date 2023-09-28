@@ -1,7 +1,10 @@
+@extends('admin.layouts.app')
+
+@section('content')
+    
 <h1> Gerenciamento do Cursos </h1>
 
 <a href="{{ route('cursos.novo') }}">Adicionar novo Curso</a>
-
 
 <table border='1'>
     <thead>
@@ -35,3 +38,7 @@
     :paginator="$cursos"
     :appends="$filters"
 />
+
+@endsection
+
+
