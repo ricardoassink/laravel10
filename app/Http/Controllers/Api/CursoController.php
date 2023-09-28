@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Adapters\ApiAdapter;
 use App\DTO\Cursos\CreateCursoDTO;
 use App\DTO\Cursos\UpdateCursoDTO;
 use App\Http\Controllers\Controller;
@@ -31,17 +32,23 @@ class CursoController extends Controller
 
         );
 
-        return CursoResource::collection($cursos->items())
-                            ->additional([
-                                'meta' =>[
-                                    'total' => $cursos->total(),
-                                    'isFirstPage' => $cursos->isFirstPage(),
-                                    'isLastPage' => $cursos->isLastPage(),
-                                    'currentPage' => $cursos->currentPage(),
-                                    'getNumberNextPage' => $cursos->getNumberNextPage(),
-                                    'getNumberPreviousPage' => $cursos->getNumberPreviousPage()
-                                ]
-                            ]);
+        // return CursoResource::collection($cursos->items())
+        //                     ->additional([
+        //                         'meta' =>[
+        //                             'total' => $cursos->total(),
+        //                             'isFirstPage' => $cursos->isFirstPage(),
+        //                             'isLastPage' => $cursos->isLastPage(),
+        //                             'currentPage' => $cursos->currentPage(),
+        //                             'getNumberNextPage' => $cursos->getNumberNextPage(),
+        //                             'getNumberPreviousPage' => $cursos->getNumberPreviousPage()
+        //                         ]
+        //                     ]);
+        
+        // agora usando ADAPTER
+        
+        return ApiAdapter::toJson($cursos);
+
+
     }
 
     /**
