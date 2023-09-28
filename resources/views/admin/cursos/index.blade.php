@@ -1,9 +1,16 @@
 @extends('admin.layouts.app')
 
-@section('content')
-    
-<h1> Gerenciamento do Cursos </h1>
 
+@section('title', 'Cursos')
+@endsection
+
+
+@section('header')
+<h1> Gerenciamento do Cursos </h1>
+@endsection
+
+
+@section('content')
 <a href="{{ route('cursos.novo') }}">Adicionar novo Curso</a>
 
 <table border='1'>
@@ -34,11 +41,5 @@
 
 </table>
 
-<x-pagination 
-    :paginator="$cursos"
-    :appends="$filters"
-/>
-
+<x-pagination :paginator="$cursos" :appends="$filters" />
 @endsection
-
-
