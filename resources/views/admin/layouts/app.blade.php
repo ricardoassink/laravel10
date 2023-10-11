@@ -7,7 +7,7 @@
     <title>@yield('title') - {{ config('app.name') }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-        <body class=" bg-cover bg-[url('img/fundo4.jpg')]  container mx-auto p-4"> 
+        <body class=" bg-[url('img/fundo4.jpg')]  container mx-auto p-4"> 
     <head>
         @yield('header')
     </head>
