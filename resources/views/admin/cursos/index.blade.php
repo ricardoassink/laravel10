@@ -8,7 +8,7 @@
 
 
     @section('header')
-    <section class="container px-4 mx-auto flex justify-between items-center">
+   
 
         <div class="flex items-center gap-x-3 ml-4">
             <h2 class="text-lg font-medium text-gray-800 dark:text-white">Gerenciamento de Cursos</h2>
@@ -31,7 +31,7 @@
                 </span>
             </a>
       
-    </section>
+    
     @endsection
 
 
