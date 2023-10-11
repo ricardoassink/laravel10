@@ -3,7 +3,7 @@
 @section('title', 'Cursos')
 
 @section('header')
-    @include('admin.cursos.partials.header');
+    @include('admin.cursos.partials.header', compact('cursos'));
 @endsection
 
 
@@ -149,4 +149,4 @@
 
 
 
-</section>
+
