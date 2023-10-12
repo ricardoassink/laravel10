@@ -33,7 +33,7 @@
 
 
         <span>
-            Adicionar novo Curso
+            Novo Curso
         </span>
     </a>
 
