@@ -38,7 +38,7 @@
 
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                            <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900 opacity-80">
 
 
                                 <tr>
@@ -66,7 +66,7 @@
 
                     </div>
                     <div class="inline-flex items-center">
-                        <button type="button" onclick="history.back()"
+                        <button type="button" onclick="history.go('{{ route('cursos.index')}}')"
                             class="flex items-center px-5 py-2 mt-5 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800 mr-8 mb-8 p-5">Cancelar</button>
 
                         <button type="submit"
